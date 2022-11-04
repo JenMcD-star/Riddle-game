@@ -21,8 +21,10 @@ create a next button for new riddle
 */
 const riddleDisplay = document.getElementById("riddle");
 const checkAnswerBtn = document.getElementById("checkAnswer");
-const userGuess = document.getElementById("guess");
+const userGuess = document.getElementById("textBox");
 const startBtn = document.getElementById("start");
+const wrongInput = document.getElementById("wrongInput");
+const wrongGuess = document.getElementById("wrongGuess");
 let riddle;
 let answer;
 let p = document.createElement("p");
@@ -42,23 +44,29 @@ function getRiddle() {
 
       p.innerHTML = `${riddle}`;
       riddleDisplay.appendChild(p);
+      wrongGuess.innerHTML = "";
+
     });
   //start timer
-  console.log(userGuess)
 }
-
+//add code to make user guess and answer case and punctuation insensitive
 function checkAnswer() {
   let userAnswer = userGuess.value;
-  console.log(answer);
-  if (userAnswer === answer) {
+  let userAnswerLower = userAnswer.toLowerCase();
+  let userAnswerFinal = userAnswerLower;
+  userAnswerFinal = this.value.replace(/[^a-zA-Z\d]/g, "");
+  let answerLower = answer.toLowerCase();
+  let answerFinal = answerLower;
+  answerFinal = this.value.replace(/[^a-zA-Z\d]/g, "");
+  let wrongtext = "Wrong guess. Guess again!";
+  if (userAnswerFinal === answerFinal) {
     //clear div
-    p.innerHTML = "";
-    riddleDisplay.appendChild(p);
-    userAnswer = 0;
-    document.getElementById('resetMe').reset();
+      console.log(userAnswerFinal)
+    document.getElementById("resetMe").reset();
+    wrongGuess.innerHTML = "You got it!";
     //stop timer
     //play again?
   } else {
-    alert("nope, try again!");
+    wrongGuess.innerHTML = wrongtext;
   }
 }

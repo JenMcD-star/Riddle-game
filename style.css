@@ -31,6 +31,19 @@ margin-bottom: 100px;
     margin-bottom: 10px;
 }
 
+#wrongGuess {
+    margin-top: 10px;
+}
+.userGuess{
+   overflow: auto;
+   overflow-x: hidden;
+   overflow-y: scroll;
+}
+#textBox {
+    font-size:30pt;
+    width: 450px;
+}
+
 #start, #checkAnswer{
   align-items: center;
   appearance: none;
