@@ -25,12 +25,14 @@ const userGuess = document.getElementById("textBox");
 const startBtn = document.getElementById("start");
 const wrongInput = document.getElementById("wrongInput");
 const wrongGuess = document.getElementById("wrongGuess");
+const nextBtn = document.getElementById("next");
 let riddle;
 let answer;
 let p = document.createElement("p");
 
 startBtn.addEventListener("click", getRiddle);
 checkAnswerBtn.addEventListener("click", checkAnswer);
+nextBtn.addEventListener("click", getRiddle);
 
 function getRiddle() {
   fetch("https://riddles-api.vercel.app/random", { mode: "cors" })
@@ -45,7 +47,6 @@ function getRiddle() {
       p.innerHTML = `${riddle}`;
       riddleDisplay.appendChild(p);
       wrongGuess.innerHTML = "";
-
     });
   //start timer
 }
@@ -54,18 +55,16 @@ function checkAnswer() {
   let userAnswer = userGuess.value;
   let userAnswerLower = userAnswer.toLowerCase();
   let userAnswerFinal = userAnswerLower;
-  userAnswerFinal = this.value.replace(/[^a-zA-Z\d]/g, "");
+  userAnswerFinal = userAnswerFinal.replace(/[^a-zA-Z\d]/g, "");
   let answerLower = answer.toLowerCase();
   let answerFinal = answerLower;
-  answerFinal = this.value.replace(/[^a-zA-Z\d]/g, "");
+  answerFinal = answerFinal.replace(/[^a-zA-Z\d]/g, "");
   let wrongtext = "Wrong guess. Guess again!";
   if (userAnswerFinal === answerFinal) {
     //clear div
-      console.log(userAnswerFinal)
     document.getElementById("resetMe").reset();
     wrongGuess.innerHTML = "You got it!";
     //stop timer
-    //play again?
   } else {
     wrongGuess.innerHTML = wrongtext;
   }
