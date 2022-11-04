@@ -29,12 +29,14 @@ const nextBtn = document.getElementById("next");
 let riddle;
 let answer;
 let p = document.createElement("p");
+let myTimer;
 
 startBtn.addEventListener("click", getRiddle);
 checkAnswerBtn.addEventListener("click", checkAnswer);
 nextBtn.addEventListener("click", getRiddle);
 
 function getRiddle() {
+resetTimer();
   fetch("https://riddles-api.vercel.app/random", { mode: "cors" })
     .then((response) => {
       return response.json();
@@ -49,6 +51,7 @@ function getRiddle() {
       wrongGuess.innerHTML = "";
     });
   //start timer
+  startTimer();
 }
 //add code to make user guess and answer case and punctuation insensitive
 function checkAnswer() {
@@ -64,8 +67,33 @@ function checkAnswer() {
     //clear div
     document.getElementById("resetMe").reset();
     wrongGuess.innerHTML = "You got it!";
-    //stop timer
+    //reset timer
+    resetTimer();
   } else {
     wrongGuess.innerHTML = wrongtext;
   }
+}
+
+function startTimer() {
+  let seconds = 30;
+  tick();
+  function tick() {
+    let countdown = document.getElementById("countdown");
+    seconds--;
+    countdown.innerHTML = "0:" + (seconds < 10 ? "0" : "") + String(seconds);
+    if (seconds > 0) {
+     myTimer = setTimeout(tick, 1000);
+    } else {
+      riddle = null;
+      answer = null;
+      p.innerHTML = "";
+      riddleDisplay.appendChild(p);
+      wrongGuess.innerHTML = "Time is up!";
+    }
+  }
+}
+function resetTimer() {
+  let countdown = document.getElementById("countdown");
+  countdown.innerHTML = "0:00";
+  clearTimeout(myTimer)
 }
