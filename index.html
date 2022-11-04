@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Riddle-me-this</title>
-</head>
-<body>
-    
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+<div class="header">
+    <h1 id"verticallyAlign" >Riddle-Me-This</h1></div>   
+<div class="content">
+<div class="start">
+    <h3>Click the start guessing button to get the riddle and start the timer!</h3>
+    <button id="start">Start Guessing</button>
+</div>
+<div id="riddle"></div>
+<div class="userGuess">
+    <form id ="resetMe">
+        <input type="text" placeholder="Enter your guess here!" id="guess">
+      </form>
+</div>
+<div id="answer"></div>
+<button id="checkAnswer">Check Answer</button>
+</div>   
 </body>
 </html>
