@@ -34,11 +34,7 @@ margin-bottom: 100px;
 #wrongGuess {
     margin-top: 10px;
 }
-.userGuess{
-   overflow: auto;
-   overflow-x: hidden;
-   overflow-y: scroll;
-}
+
 #textBox {
     font-size:30pt;
     width: 450px;

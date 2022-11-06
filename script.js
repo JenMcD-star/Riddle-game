@@ -75,7 +75,7 @@ function checkAnswer() {
 }
 
 function startTimer() {
-  let seconds = 30;
+  let seconds = 59;
   tick();
   function tick() {
     let countdown = document.getElementById("countdown");
@@ -84,11 +84,12 @@ function startTimer() {
     if (seconds > 0) {
      myTimer = setTimeout(tick, 1000);
     } else {
-      riddle = null;
-      answer = null;
-      p.innerHTML = "";
+      p.innerHTML = `The answer is ${answer}`;
       riddleDisplay.appendChild(p);
       wrongGuess.innerHTML = "Time is up!";
+      riddle = null;
+      answer = null;
+      
     }
   }
 }
