@@ -84,7 +84,7 @@ function startTimer() {
     if (seconds > 0) {
      myTimer = setTimeout(tick, 1000);
     } else {
-      p.innerHTML = `The answer is ${answer}`;
+      p.innerHTML = `The answer is: ${answer}`;
       riddleDisplay.appendChild(p);
       wrongGuess.innerHTML = "Time is up!";
       riddle = null;
